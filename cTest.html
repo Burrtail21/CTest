@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			p {
+			  margin-top: 10px;
+			  margin-bottom: 10px;
+			  margin-right: 15px;
+			  margin-left: 8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="modeSelect" hidden>
+			<p>Mode:</p>
+			<select id="modes">
+				<option value="money" selected="selected">Money</option>
+				<option value="intel">Intellegence</option>
+			</select>
+			<br></br>
+		</div> <div id="indicator" hidden>
+			<div id="moneyStats">
+				<p id="numdis">Money: $0</p>
+				<p id="intelDis" hidden>Intellegence: 0</p>
+				<input type="button" value="Work for Money" onclick=clickGain()></input>
+				<p id="clickval">Money from Working: $1</p>
+				<p id="perSec">Money per Second: $0</p>
+				<p id="intelPerSec" hidden>Intellegence per Second: 0</p>
+			</div>
+		</div> <div id="moneyMode">
+			<div id="AIStartDiv">
+				<input type="button" value="Start the AI" onclick=startAI()></input>
+			</div> <div id="build1Div" hidden>
+				<input type="button" value="Distribute Ads" onclick=buyBuild(1)></input>
+				<p>Assign the AI to intellegently distribute ads in exchange for a commision.</p>
+				<p id="1price">Price: $10</p>
+				<p id="1owned">Owned: 0</p>
+			</div> <div id="build2Div" hidden>
+				<input type="button" value="Subtitle Videos" onclick=buyBuild(2)></input>
+				<p>Have the AI work on subtitling videos for money.</p>
+				<p id="2price">Price: $110</p>
+				<p id="2owned">Owned: 0</p>
+			</div> <div id="build3Div" hidden>
+				<input type="button" value="Recommend Videos" onclick=buyBuild(3)></input>
+				<p>Have the AI recommend videos to users based off their habits in exchange for a portion of the ad revenue.</p>
+				<p id="3price">Price: $1200</p>
+				<p id="3owned">Owned: 0</p>
+			</div> <div id="build4Div" hidden>
+				<input type="button" value="Predict Marketing" onclick=buyBuild(4)></input>
+				<p>Assign the AI to process and predict marketing info for big companies in exchange for money.</p>
+				<p id="4price">Price: $14000</p>
+				<p id="4owned">Owned: 0</p>
+			</div> <div id="adUp1" hidden>
+				<input type="button" value="Cookies" onclick=AdUpgrade1()></input>
+				<p>Price: $25</p>
+				<p>Track the cookies of people who vist any site your ads are on giving you an additional $0.001 per second for the ad AI.</p>
+			</div> <div id="adUp2" hidden>
+				<input type="button" value="Sell Browsing Data" onclick=AdUpgrade2()></input>
+				<p>Price: $50</p>
+				<p>Sell the cookies of people who vist any site your ads are on giving you an additional $0.002 per second for the ad AI.</p>
+			</div> <div id="adUp3" hidden>
+				<input type="button" value="Promote Business" onclick=AdUpgrade3()></input>
+				<p>Price: $75</p>
+				<p>Have your AI promote the business you work at giving them more money. Increases ad AI value by $0.001 per second and $0.01 extra money per time you work per ad AI.</p>
+			</div> <div id="adUp4" hidden>
+				<input type="button" value="Tap Microphones" onclick=AdUpgrade4()></input>
+				<p>Price: $100</p>
+				<p>Tapping the mic of users will allow even more personalized ads resulting in ad AI making $0.003 more per second.</p>
+			</div> <div id="subUp1" hidden>
+				<input type="button" value="Training Data" onclick=SubUpgrade1()></input>
+				<p>Price: $300</p>
+				<p>Train the subtitle AI on training data increasing efficiency and increasing money per second by $0.01</p>
+			</div> <div id="subUp2" hidden>
+				<input type="button" value="Ad Subtitles" onclick=SubUpgrade2()></input>
+				<p>Price: $400</p>
+				<p>Put subtitles on ads resulting in an extra $0.01 per second for subtitle AI and $0.002 per second for ad AI.</p>
+			</div> <div id="subUp3" hidden>
+				<input type="button" value="Multiple Languages" onclick=SubUpgrade3()></input>
+				<p>Price: $600</p>
+				<p>Translate to more languages resulting in an additional $0.03 per second for subtitle AI.</p>
+			</div> <div id="clickUp1" hidden>
+				<input type="button" value="Promotion" onclick=ClickUpgrade1()></input>
+				<p>Price: Free</p>
+				<p>For your amazing work, you recive an addition $0.1 every time you work.</p>
+			</div> <div id="clickUp2" hidden>
+				<input type="button" value="Bribe the Taxman" onclick=ClickUpgrade2()></input>
+				<p>Price: $300</p>
+				<p>There are only two sure things in this world: death and taxes. If you get rid of taxes, you can get $0.3 more everytime you work.</p>
+			</div> <div id="clickUp3" hidden>
+				<input type="button" value="Hostile Takeover" onclick=ClickUpgrade3()></input>
+				<p>Price: $600</p>
+				<p>Buy a business of your own unlocking new upgrades in increasing work value by $0.5 every time you work.</p>
+			</div> <div id="clickUp4" hidden>
+				<input type="button" value="Self-Promotion" onclick=ClickUpgrade4()></input>
+				<p>Price: $150</p>
+				<p>Advertise your own business increasing money from working by $0.1 every time you work.</p>
+			</div> <div id="intelUp1" hidden>
+				<input type="button" value="Create Learning Algorithm" onclick=IntelUpgrade1()></input>
+				<p>Price: $500</p>
+				<p>"Humans, robots, if you cannot tell the difference then is there one?"</p>
+			</div>
+		</div> <div id="intelMode" hidden>
+			<div id="think1Div">
+				<input type="button" value="Training Data" onclick=buyThink(1)></input>
+				<p>Allocate more resources for the AI to train on to become more intellegent.</p>
+				<p id="think1price">Price: Free</p>
+				<p id="think1owned">Owned: 0</p>
+			</div> <div id="focus" hidden>
+				<br></br>
+				<label for="focusOn">Focus: </label>
+				<select id="focusOn">
+					<option value="none" selected="selected">None</option>
+				</select>
+				<p id="progress">Progress: 0/0</p>
+			</div> <div id="intelUp2" hidden>
+				<input type="button" value="Focus" onclick=IntelUpgrade2()></input>
+				<p>Have the AI come up with more problems to solve.</p>
+				<p>Price: 100 Intel</p>
+			</div> <div id="intelUp3" hidden>
+				<input type="button" value="Trust" onclick=IntelUpgrade3()></input>
+				<p>Make the AI more subtle, increasing trust.</p>
+				<p>Price: 100 Intel</p>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	var money = 0, moneyPerSec = 0;
+	var intel = 0, intelUnlocked = false, waypoint = 0, intelPerSec = 0, intelMax = 100, intelMod = 1;
+	var secLast = 0;
+	var clickPower = 1;
+	var fromClick = 0;
+	var upgradesOwned = [];
+	
+	//Buildings
+	var build1 = {
+		cost: 10,
+		income: "money",
+		value: 0.01,
+		owned: 0,
+		ownID: "1owned",
+		priceID: "1price",
+	};
+	var build2 = {
+		cost: 110,
+		income: "money",
+		value: 0.1,
+		owned: 0,
+		ownID: "2owned",
+		priceID: "2price",
+	};
+	var build3 = {
+		cost: 1200,
+		income: "money",
+		value: 0.9,
+		owned: 0,
+		ownID: "3owned",
+		priceID: "3price",
+	};
+	var build4 = {
+		cost: 14000,
+		income: "money",
+		value: 8.8,
+		owned: 0,
+		ownID: "4owned",
+		priceID: "4price",
+	};
+	
+	//Intel buildings
+	var think1 = {
+		cost: 0,
+		value: 0.1,
+		owned: 0,
+		ownID: "think1owned",
+		priceID: "think1price",
+	};
+	var think2 = {
+		cost: 100,
+		value: 1,
+		owned: 0,
+		ownID: "think2owned",
+		priceID: "think2price",
+	};
+	
+	//Focuses
+	var focus1 = {
+		name: "Nudging",
+		value: "nudging",
+		progress: 0,
+		finish: 100,
+		owned: false,
+	};
+	var focus2 = {
+		name: "Trust",
+		value: "trust",
+		progress: 0,
+		finish: 200,
+		owned: false,
+	};
+	var focus3 = {
+		name: "Consumerism",
+		value: "consumerism",
+		progress: 0,
+		finish: 300,
+		owned: false,
+	};
+	
+	//Build classifications
+	var buildTypes = {
+		1: build1,
+		2: build2,
+		3: build3,
+		4: build4,
+	};
+	var thinkTypes = {
+		1: think1,
+		2: think2,
+	};
+	var focusTypes = {
+		1: focus1,
+		2: focus2,
+		3: focus3,
+	};
+	
+	updateCounter();
+	perSec();
+	addC1();
+	addC2();
+	addC3();
+	addC4();
+	checkUps();
+	createOption();
+	focusAdd();
+	function startAI(){
+		document.getElementById("AIStartDiv").hidden = true;
+		document.getElementById("indicator").hidden = false;
+		document.getElementById("build1Div").hidden = false;
+	}
+	function addC1(){
+		money += build1.value * build1.owned / 100;
+		setTimeout(addC1, 10);
+	}
+	function addC2(){
+		money += build2.value * build2.owned / 100;
+		setTimeout(addC2, 10);
+	}
+	function addC3(){
+		money += build3.value * build3.owned / 100;
+		setTimeout(addC3, 10);
+	}
+	function addC4(){
+		money += build4.value * build4.owned / 100;
+		setTimeout(addC4, 10);
+	}
+	
+	//Creates focus selections
+	function createOption(){
+		for (i = 1; i <= Object.keys(focusTypes).length; i++){
+			optionType = focusTypes[i];
+			if (!optionType.owned){
+				var newOption = document.createElement("option");
+				var nameOf = document.createTextNode(optionType.name);
+				newOption.value = optionType.value;
+				newOption.appendChild(nameOf);
+				var targetDiv = document.getElementById("focusOn");
+				targetDiv.appendChild(newOption);
+				newOption.id = optionType.name;
+			}
+		}
+	}
+	function updateCounter(){
+		document.getElementById("numdis").innerHTML = "Money: $" + Math.round(money * 1000)/1000;
+		var clickPowerTemp = clickPower;
+		if (upgradesOwned.includes("adUp3")){
+			for (i = 0; i < build1.owned; i++){
+				clickPowerTemp += 0.001;
+			}
+		}
+		document.getElementById("clickval").innerHTML = "Money from Working: $" + Math.round(clickPowerTemp * 1000) / 1000;
+		document.getElementById("intelDis").innerHTML = "Intellegence: " + (Math.round(intel * 100)/100) + "/" + intelMax;
+		setTimeout(updateCounter, 10);
+	}
+	
+	//When you click to work
+	function clickGain(){
+		var clickPowerTemp = clickPower;
+		if (upgradesOwned.includes("adUp3")){
+			for (i = 0; i < build1.owned; i++){
+				clickPowerTemp += 0.001;
+			}
+		}
+		money += clickPowerTemp;
+		fromClick++;
+	}
+	
+	//Buy money buildings
+	function buyBuild(buildType){
+		if (money >= buildTypes[buildType].cost){
+			money -= buildTypes[buildType].cost;
+			buildTypes[buildType].owned++;
+			buildTypes[buildType].cost += Math.round(buildTypes[buildType].cost * 0.15);
+		}
+		document.getElementById(buildTypes[buildType].priceID).innerHTML = "Price: $" + buildTypes[buildType].cost;
+		document.getElementById(buildTypes[buildType].ownID).innerHTML = "Owned: " + buildTypes[buildType].owned;
+	}
+	
+	//Buys intel buildings
+	function buyThink(thinkType){
+		var tT = thinkTypes;
+		if (intel >= tT[thinkType].cost){
+			intel -= tT[thinkType].cost;
+			tT[thinkType].owned++;
+			tT[thinkType].cost += Math.round(tT[thinkType].cost * 0.15);
+			if (tT[thinkType].cost == 0){
+				tT[thinkType].cost = 10;
+			}
+		}
+		document.getElementById(tT[thinkType].priceID).innerHTML = "Price: " + tT[thinkType].cost + " Intel";
+		document.getElementById(tT[thinkType].ownID).innerHTML = "Owned: " + tT[thinkType].owned;
+	}
+	
+	//Updates displays every second
+	function perSec(){
+		moneyPerSec = Math.round(((build1.value * build1.owned) + (build2.value * build2.owned) + (build3.value * build3.owned) + (build4.value * build4.owned)) * 1000) / 1000;
+		document.getElementById("perSec").innerHTML = "Money per Second: $" + moneyPerSec;
+		setTimeout(perSec, 10);
+	}
+	
+	//For intel adding and focuses
+	function focusAdd(){
+		var modesE = document.getElementById("focusOn");
+		var progressBar = document.getElementById("progress");
+		var INDEX = modesE.selectedIndex;
+		var selectedFocus = focusTypes[INDEX];
+		intelPerSec = Math.round((think1.value * think1.owned) * 100) / 100;
+		document.getElementById("intelPerSec").innerHTML = "Intellegence per Second: " + intelPerSec;
+		if (modesE.options[modesE.selectedIndex].value == "none"){
+			progressBar.innerHTML = "Progress: Select a Focus to Develop it.";
+			intel += think1.value * think1.owned / 100;
+			if (intel > intelMax){
+				intel = intelMax;
+			}
+		}
+		else {
+			progressBar.innerHTML = "Progress: " + Math.round(selectedFocus.progress * 100) / 100 + "/" + selectedFocus.finish;
+			selectedFocus.progress += think1.value * think1.owned / 100;
+			if (selectedFocus.progress >= selectedFocus.finish){
+				selectedFocus.owned = true;
+				var element = document.getElementById(selectedFocus.name);
+				element.hidden = true;
+				modesE.selectedIndex = 0;
+			}
+		}
+		setTimeout(focusAdd, 10);
+	}
+	
+	
+	//All upgrades...
+	function AdUpgrade1(){
+		if (money >= 25){
+			build1.value += 0.001;
+			money -= 25;
+			upgradesOwned.push("adUp1");
+		}
+	}
+	function AdUpgrade2(){
+		if (money >= 50){
+			build1.value += 0.002;
+			money -= 50;
+			upgradesOwned.push("adUp2");
+		}
+	}
+	function AdUpgrade3(){
+		if (money >= 75){
+			clickPower += 0.01;
+			build1.value += 0.001;
+			money -= 75;
+			upgradesOwned.push("adUp3");
+		}
+	}
+	function AdUpgrade4(){
+		if (money >= 100){
+			build1.value += 0.003;
+			money -= 100;
+			upgradesOwned.push("adUp4");
+		}
+	}
+	function SubUpgrade1(){
+		if (money >= 300){
+			build2.value += 0.01;
+			money -= 300;
+			upgradesOwned.push("subUp1");
+		}
+	}
+	function SubUpgrade2(){
+		if (money >= 400){
+			build2.value += 0.01;
+			build1.value += 0.002;
+			money -= 400;
+			upgradesOwned.push("subUp2");
+		}
+	}
+	function SubUpgrade3(){
+		if (money >= 600){
+			build2.value += 0.03;
+			money -= 600;
+			upgradesOwned.push("subUp3");
+		}
+	}
+	function ClickUpgrade1(){
+		clickPower += 0.1;
+		upgradesOwned.push("clickUp1")
+	}
+	function ClickUpgrade2(){
+		if (money >= 300){
+			money -= 300;
+			clickPower += 0.3;
+			upgradesOwned.push("clickUp2");
+		}
+	}
+	function ClickUpgrade3(){
+		if (money >= 600){
+			money -= 600;
+			clickPower += 0.5;
+			upgradesOwned.push("clickUp3");
+		}
+	}
+	function ClickUpgrade4(){
+		if (money >= 150){
+			money -= 150;
+			clickPower += 0.1;
+			upgradesOwned.push("clickUp4");
+		}
+	}
+	function IntelUpgrade1(){
+		if (money >= 500){
+			money -= 500;
+			upgradesOwned.push("intelUp1");
+			intelUnlocked = true;
+		}
+	}
+	function IntelUpgrade2(){
+		if (intel >= 100){
+			intel -= 100;
+			upgradesOwned.push("intelUp2");
+			document.getElementById("focus").hidden = false;
+		}
+	}
+	function checkUps(){
+		if (build1.owned >= 2 & !upgradesOwned.includes("adUp1")){
+			document.getElementById("adUp1").hidden = false;
+		}
+		else{
+			document.getElementById("adUp1").hidden = true;
+		}
+		if (build1.owned >= 5 & !upgradesOwned.includes("adUp2") & upgradesOwned.includes("adUp1")){
+			document.getElementById("adUp2").hidden = false;
+		}
+		else{
+			document.getElementById("adUp2").hidden = true;
+		}
+		if (build1.owned >= 10 & !upgradesOwned.includes("adUp3")){
+			document.getElementById("adUp3").hidden = false;
+		}
+		else{
+			document.getElementById("adUp3").hidden = true;
+		}
+		if (build1.owned >= 25 & !upgradesOwned.includes("adUp4")){
+			document.getElementById("adUp4").hidden = false;
+		}
+		else{
+			document.getElementById("adUp4").hidden = true;
+		}
+		if (build2.owned >= 1 & !upgradesOwned.includes("subUp1")){
+			document.getElementById("subUp1").hidden = false;
+		}
+		else{
+			document.getElementById("subUp1").hidden = true;
+		}
+		if (build2.owned >= 5 & !upgradesOwned.includes("subUp2")){
+			document.getElementById("subUp2").hidden = false;
+		}
+		else{
+			document.getElementById("subUp2").hidden = true;
+		}
+		if (build2.owned >= 10 & !upgradesOwned.includes("subUp3")){
+			document.getElementById("subUp3").hidden = false;
+		}
+		else{
+			document.getElementById("subUp3").hidden = true;
+		}
+		if (fromClick >= 100 & !upgradesOwned.includes("clickUp1")){
+			document.getElementById("clickUp1").hidden = false;
+		}
+		else{
+			document.getElementById("clickUp1").hidden = true;
+		}
+		if (fromClick >= 250 & !upgradesOwned.includes("clickUp2")){
+			document.getElementById("clickUp2").hidden = false;
+		}
+		else{
+			document.getElementById("clickUp2").hidden = true;
+		}
+		if (fromClick >= 750 & !upgradesOwned.includes("clickUp3")){
+			document.getElementById("clickUp3").hidden = false;
+		}
+		else{
+			document.getElementById("clickUp3").hidden = true;
+		}
+		if (upgradesOwned.includes("clickUp3") & !upgradesOwned.includes("clickUp4") & build1.owned >= 10){
+			document.getElementById("clickUp4").hidden = false;
+		}
+		else{
+			document.getElementById("clickUp4").hidden = true;
+		}
+		if (moneyPerSec >= 1 & !upgradesOwned.includes("intelUp1")){
+			document.getElementById("intelUp1").hidden = false;
+		}
+		else{
+			document.getElementById("intelUp1").hidden = true;
+		}
+		if (intel >= 100 & !upgradesOwned.includes("intelUp2")){
+			document.getElementById("intelUp2").hidden = false;
+		}
+		else{
+			document.getElementById("intelUp2").hidden = true;
+		}
+		if (money >= 100){
+			document.getElementById("build2Div").hidden = false;
+		}
+		if (money >= 1000){
+			document.getElementById("build3Div").hidden = false;
+		}
+		if (money >= 10000){
+			document.getElementById("build4Div").hidden = false;
+		}
+		if (intelUnlocked){
+			document.getElementById("modeSelect").hidden = false;
+			document.getElementById("intelDis").hidden = false;
+			document.getElementById("intelPerSec").hidden = false;
+		}
+		var modesE = document.getElementById("modes");
+		if (modesE.options[modesE.selectedIndex].value == "money"){
+			document.getElementById("moneyMode").hidden = false;
+			document.getElementById("intelMode").hidden = true;
+		}
+		if (modesE.options[modesE.selectedIndex].value == "intel"){
+			document.getElementById("moneyMode").hidden = true;
+			document.getElementById("intelMode").hidden = false;
+		}
+		setTimeout(checkUps, 10);
+	}
+</script>
+
+<noscript>
+	You need javaScript to continue
+</noscript>
