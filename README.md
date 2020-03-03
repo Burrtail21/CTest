@@ -6,3 +6,5 @@ In terms of usage, feel free to modify the file but just don't steal my ideas or
 I know you won't, but don't do it.
 
 Anyway, feedback is always nice so feel free to contact me with feedback or ideas, thanks.
+
+Current Verion: 0.1.5
