@@ -1,0 +1,43 @@
+To Do
+
+-----
+
+1. Focuses unlock new upgrades
+
+2. Trust will increase max intel
+
+3. There are spelling errors, I'm going to fix them, chill
+
+4. More upgrades for 'money' branch
+
+
+Planned
+
+-----
+
+1. Power branch, not sure if I want to make it 'power' as in electricity for your computer that things pull
+or if I want to make it 'power' as in influence or whatever
+
+2. More intel-based buildings
+
+3. Redo the currency gain system so it uses all the buildings and values at once instead of giving them all their own functions.
+
+4. Redo the purchase system with objects that define currencies used
+
+
+Ideas
+
+-----
+
+1. Better formatting, upgrades to the right, buildings on the left
+
+2. Increase effiency for showing upgrades using objects and executable bools
+
+3. Stock market bot which can be upgraded using intel? 
+Needs to display stocks it owns and buy stocks based on money it holds, requires planned #4
+
+4. Either new verion availble notifications or website hosting
+
+5. More progression branches
+
+6. Upgrades use objects to determine what the upgrade does instead of giving each upgrade a new function
